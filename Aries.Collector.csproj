@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <PackageId>Collector</PackageId>
+    <Authors>Apollo Eddy</Authors>
+    <Company>Aries</Company>
+    <AssemblyName>Collector</AssemblyName>
+  </PropertyGroup>
+
+</Project>
