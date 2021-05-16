@@ -15,13 +15,14 @@ namespace Aries.Collector.Extractors
 
 		public HuashitongPicture(string jsonBlock)
 		{
+			if (jsonBlock == "") { throw new ArgumentNullException(); }
 			var tp = new TextParser(jsonBlock);
 			title = tp.extractOne("\"title\":\"", "\"");
-			artist = tp.extractOne("\"name\":\"", "\"");
-			update = DateTime.Parse(tp.extractOne("\"upAt\":\"", "\""));
+			artist = tp.extractOne("\"name\":\"", "\"");		
 			picID = tp.extractOne("\"pId\":\"", "\"");
-			imgCount = int.Parse(tp.extractOne("\"imageNum\":", ","));
 			link = picUrl(tp);
+			try { update = DateTime.Parse(tp.extractOne("\"upAt\":\"", "\"")); } catch { return; }
+			try { imgCount = int.Parse(tp.extractOne("\"imageNum\":", ",")); } catch { return; }
 			// Console.WriteLine($"{title}[{artist}]：\n\t链接：{link}\n\t上传时间：{update}\n\t图片ID：{picID}\n\t作品集包含的图片数：{imgCount}");
 		}
 		public string generateFilename()
